@@ -1,5 +1,5 @@
-from PyDictionary import PyDictionary
 import streamlit as st
+from PyDictionary import PyDictionary
 
 dictionary = PyDictionary()
 
@@ -8,9 +8,10 @@ st.title('pyDictionary on Streamlit')
 user_input = st.text_input(
     label = "Type a word and hit Enter",
     value = '',
-    max_chars = None,
-    key = None,
-    type = "default")
+    # max_chars = None,
+    # key = None,
+    # type = "default"
+)
 
 # Translation of pyDictionary is buggy so commented out
 # st.sidebar.write('### Spanish Translation:')
@@ -19,7 +20,7 @@ user_input = st.text_input(
 # Get array of all meanings of the word
 meanings = dictionary.meaning(user_input)
 
-# pos = part of speech
+# pos = part of speech (for e.g. noun, verb, adj, adverb)
 for pos in meanings.keys():
     st.markdown(f" **_{pos.lower()}_** ") # lowercase, bold, italic
     m = 1
