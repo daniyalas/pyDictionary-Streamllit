@@ -3,7 +3,12 @@ from PyDictionary import PyDictionary
 
 dictionary = PyDictionary()
 
-st.title('pyDictionary on Streamlit')
+'''
+[github_badge]: https://badgen.net/badge/icon/GitHub?icon=github&color=black&label
+[github_link]: https://github.com/daniyalas/pyDictionary-Streamllit
+
+# pyDictionary [![GitHub][github_badge]][github_link]
+'''
 
 user_input = st.text_input(
     label = "Type a word and hit Enter",
@@ -51,12 +56,16 @@ antonyms = dictionary.antonym(user_input)
 if bool(user_input) == True:
     right_column.write('### Antonyms')
 
-    # loop through the words
-    a = 1
-    for antonym in antonyms:
-        # right_column.write(antonym)
-        right_column.markdown(f"{a}. {antonym}")
-        a += 1
+    # Some words don't have Antonyms. For e.g: 'hello'
+    if antonyms:
+        # loop through the words
+        a = 1
+        for antonym in antonyms:
+            # right_column.write(antonym)
+            right_column.markdown(f"{a}. {antonym}")
+            a += 1
+    else:
+        right_column.write('This word has no Antonyms according to dictionary.com')
 
 st.markdown('---') # This creates a thin divider
 st.markdown('This streamlit app is developed by [Daniyal A. Syed](https://www.linkedin.com/in/daniyal-as/).')
